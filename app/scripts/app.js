@@ -6,7 +6,8 @@ var itApp = angular.module('itApp', [
   'ui.bootstrap',
   'ui.bootstrap.tpls',
 
-  'itApp.article'
+  'itApp.article',
+  'itApp.example'
 ]);
 
 itApp.config(function ($stateProvider, $urlRouterProvider) {
