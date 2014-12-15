@@ -4,7 +4,9 @@ var itApp = angular.module('itApp', [
   'ngSanitize',
   'ui.router',
   'ui.bootstrap',
-  'ui.bootstrap.tpls'
+  'ui.bootstrap.tpls',
+
+  'itApp.article'
 ]);
 
 itApp.config(function ($stateProvider, $urlRouterProvider) {
@@ -23,8 +25,4 @@ itApp.config(function ($stateProvider, $urlRouterProvider) {
   });
 
   $urlRouterProvider.when('', '/default');
-});
-
-itApp.run(function ($state) {
-  //$state.go('default');
 });

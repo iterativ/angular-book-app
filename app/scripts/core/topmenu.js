@@ -14,9 +14,9 @@ function TopMenuController(_, $state) {
   }
 
   function filterMenuStates() {
-    var menuRoutes = _.filter($state.get(), function (state) {
+    var menuStates = _.filter($state.get(), function (state) {
       return state.inMenu;
     });
-    return menuRoutes;
+    return menuStates;
   }
 }
