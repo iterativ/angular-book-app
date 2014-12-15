@@ -7,6 +7,10 @@ ExampleController.$inject = [];
 function ExampleController() {
   var vm = this;
 
+  vm.mouseOver = function() {
+    console.log('mouseOver in ExampleController');
+  };
+
   activate();
 
   function activate() {
