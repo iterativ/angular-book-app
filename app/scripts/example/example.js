@@ -10,6 +10,7 @@ function ExampleController() {
   vm.mouseOver = function() {
     console.log('mouseOver in ExampleController');
   };
+  vm.title = 'Hover me!';
 
   activate();
 
