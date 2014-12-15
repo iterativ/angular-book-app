@@ -9,4 +9,17 @@ angular.module('itApp.article').config(function ($stateProvider) {
     inMenu: true,
     menuTitle: 'Articles'
   });
+
+  $stateProvider.state('articledetail', {
+    url: '/articles/:id',
+    templateUrl: '/scripts/article/article.detail.html',
+    controller: 'ArticleDetailController',
+    controllerAs: 'vm',
+    resolve: {
+      article: function($stateParams, articleService) {
+        var articleId = parseInt($stateParams.id, 10);
+        return articleService.getArticleById(articleId);
+      }
+    }
+  });
 });

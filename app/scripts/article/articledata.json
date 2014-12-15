@@ -1,0 +1,19 @@
+[{
+  "id": 1,
+  "name": "JavaScript The Good Parts",
+  "author": "Douglas Crockford",
+  "publisher": "O'Reilly",
+  "imageUrl": "http://akamaicovers.oreilly.com/images/9780596517748/cat.gif"
+ }, {
+  "id": 2,
+  "name": "The Pragmatic Programmer",
+  "author": "Dave Thomas and Andy Hunt",
+  "publisher": "Addison-Wesley Professional",
+  "imageUrl": "http://upload.wikimedia.org/wikipedia/en/8/8f/The_pragmatic_programmer.jpg"
+}, {
+  "id": 3,
+  "name": "Java in a Nutshell",
+  "author": "David Flanagan",
+  "publisher": "O'Reilly",
+  "imageUrl": "http://akamaicovers.oreilly.com/images/9780596007737/cat.gif"
+}]

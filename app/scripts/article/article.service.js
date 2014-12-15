@@ -1,21 +1,24 @@
 'use strict';
 
-angular.module('itApp').factory('articleService', articleService);
+angular.module('itApp.article').factory('articleService', articleService);
 
-articleService.$inject = ['$q'];
+articleService.$inject = ['$q', '$http'];
 
-function articleService($q) {
-  var articles = [
-    'JavaScript The Good Parts',
-    'The Pragmatic Programmer',
-    'Java in a Nutshell'
-  ];
-
+function articleService($q, $http) {
   return {
-    // only what is returned is accessible from the outside
-    getArticles: function() {
-      // return a promise wrapped with the $q.when call
-      return $q.when(articles);
-    }
+    getArticles: getArticles,
+    getArticleById: getArticleById
   };
+
+  function getArticles() {
+    return $http.get('/scripts/article/articledata.json').then(function(response) {
+      return response.data;
+    });
+  }
+
+  function getArticleById(id) {
+    return getArticles().then(function(articles) {
+      return _.find(articles, {id: id});
+    });
+  }
 }
