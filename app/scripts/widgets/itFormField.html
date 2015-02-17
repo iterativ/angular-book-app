@@ -1,0 +1,7 @@
+<div class="form-group"
+     ng-class="{'has-error': (form[name].$invalid && form[name].$dirty)}">
+    <label class="col-sm-3 control-label" ng-bind-html="label"></label>
+
+    <div class="col-sm-9" ng-transclude>
+    </div>
+</div>

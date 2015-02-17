@@ -2,18 +2,19 @@
 
 angular.module('itApp.article').controller('ExampleController', ExampleController);
 
-ExampleController.$inject = [];
+ExampleController.$inject = ['$log'];
 
-function ExampleController() {
+function ExampleController($log) {
   var vm = this;
 
   vm.mouseOver = function() {
-    console.log('mouseOver in ExampleController');
+    $log.debug('mouseOver in ExampleController');
   };
   vm.title = 'Hover me!';
 
   activate();
 
   function activate() {
+    $log.debug('ExampleController activated');
   }
 }

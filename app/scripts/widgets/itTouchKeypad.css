@@ -1,0 +1,49 @@
+.touch-keypad-input {
+    height: 86px;
+    width: 176px;
+    display: inline;
+    font-size: 36px;
+    line-height: 1;
+}
+
+.touch-keypad-feedback {
+    position: absolute;
+    right: 100px;
+    top: 0;
+    bottom: 0;
+    height: 86px;
+    margin: auto;
+    font-size: 36px;
+    cursor: pointer;
+    color: #ccc;
+    z-index: 2;
+    line-height: 86px;
+}
+
+.touch-keypad-feedback:hover {
+    color: #999;
+}
+
+.touch-keypad-row {
+    margin-bottom: 4px;
+}
+
+.btn-touch-keypad, .btn-group-touch-keypad > .btn {
+    padding: 10px 0;
+    font-size: 36px;
+    font-weight: bold;
+    line-height: 1;
+    border-radius: 6px;
+    width: 86px;
+    height: 86px;
+}
+
+.btn-touch-keypadx2, .btn-group-touch-keypad > .btn {
+    padding: 10px 0;
+    font-size: 36px;
+    font-weight: bold;
+    line-height: 1;
+    border-radius: 6px;
+    width: 176px;
+    height: 86px;
+}

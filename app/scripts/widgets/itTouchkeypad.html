@@ -1,0 +1,55 @@
+<div ng-if="vm.title" class="modal-header">
+    <h4 class="modal-title">{{vm.title}}</h4>
+</div>
+
+<div class="modal-body" ng-keypress="vm.handleKeypress($event)">
+    <div class="touch-keypad-row text-center">
+        <div class="input-group">
+            <input ng-model="vm.text"
+                   type="text"
+                   sc-autofocus="true"
+                   class="form-control touch-keypad-input">
+                <span class="touch-keypad-feedback" aria-hidden="true" ng-click="vm.clear()">
+                    <i class="fa fa-times"> </i>
+                </span>
+                <span class="input-group-btn">
+                    <button ng-click="vm.clearChar()" class="btn btn-warning btn-touch-keypad">C</button>
+                </span>
+        </div>
+    </div>
+    <div class="touch-keypad-row text-center">
+        <button ng-click="vm.add('7')" class="btn btn-default btn-touch-keypad">7</button>
+        <button ng-click="vm.add('8')" class="btn btn-default btn-touch-keypad">8</button>
+        <button ng-click="vm.add('9')" class="btn btn-default btn-touch-keypad">9</button>
+    </div>
+    <div class="touch-keypad-row text-center">
+        <button ng-click="vm.add('4')" class="btn btn-default btn-touch-keypad">4</button>
+        <button ng-click="vm.add('5')" class="btn btn-default btn-touch-keypad">5</button>
+        <button ng-click="vm.add('6')" class="btn btn-default btn-touch-keypad">6</button>
+    </div>
+    <div class="touch-keypad-row text-center">
+        <button ng-click="vm.add('1')" class="btn btn-default btn-touch-keypad">1</button>
+        <button ng-click="vm.add('2')" class="btn btn-default btn-touch-keypad">2</button>
+        <button ng-click="vm.add('3')" class="btn btn-default btn-touch-keypad">3</button>
+    </div>
+
+    <div ng-if="vm.type=='hour'">
+        <div class="touch-keypad-row text-center">
+            <button ng-click="vm.add('0')" class="btn btn-default btn-touch-keypad">0</button>
+            <button ng-click="vm.add(':')" class="btn btn-default btn-touch-keypad">:</button>
+            <button ng-click="vm.ok()" class="btn btn-success btn-touch-keypad">OK</button>
+        </div>
+        <div class="touch-keypad-row text-center">
+            <button ng-click="vm.add('15')" class="btn btn-default btn-touch-keypad">15</button>
+            <button ng-click="vm.add('30')" class="btn btn-default btn-touch-keypad">30</button>
+            <button ng-click="vm.add('45')" class="btn btn-default btn-touch-keypad">45</button>
+        </div>
+    </div>
+
+    <div ng-if="vm.type=='number'" class="touch-keypad-row text-center">
+        <button ng-click="vm.add('0')" class="btn btn-default btn-touch-keypad">0</button>
+        <button ng-disabled="vm.options.wholeNumber" ng-click="vm.add('.')" class="btn btn-default btn-touch-keypad">.</button>
+        <button ng-disabled="!vm.text" ng-click="vm.ok()" class="btn btn-success btn-touch-keypad">OK</button>
+    </div>
+
+</div>

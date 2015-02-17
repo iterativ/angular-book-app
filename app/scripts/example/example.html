@@ -17,6 +17,32 @@
                 ratione tenetur, ullam. Dignissimos harum id mollitia sunt totam.
             </it-panel>
 
+
+            <form class="form-horizontal"
+                  role="form"
+                  name="form"
+                  ng-submit="vm.submit(form.$valid)">
+
+                <it-form-field
+                    form="form"
+                    label="Name"
+                    name="name">
+
+                    <input class="form-control" type="text" ng-required="true"/>
+
+                </it-form-field>
+
+                <it-number-form-field
+                    ng-model="numberModel"
+                    label="Zahl"
+                    name="number"
+                    ng-disabled="false"
+                    ng-required="true"
+                    form="form">
+                </it-number-form-field>
+
+            </form>
+
         </div>
     </div>
 </div>

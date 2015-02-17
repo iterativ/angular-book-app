@@ -1,0 +1,28 @@
+<div class="form-group"
+     ng-class="{'has-error': (form[name].$invalid && form[name].$dirty)}">
+
+    <label class="col-sm-3 control-label">{{label}}</label>
+
+    <div class="col-sm-9">
+        <div class="input-group">
+
+            <input ng-model="ngModel"
+                   type="text"
+                   name="{{name}}"
+                   ng-required="ngRequired()"
+                   ng-disabled="ngDisabled()"
+                   it-focus-for-keypad
+                   it-validate="vm.validate()"
+                   class="form-control">
+
+            <it-number-input-button
+                    sv-disabled="ngDisabled()"
+                    field="form[name]"
+                    class="input-group-btn"
+                    title="{{title}}"
+                    ng-model="ngModel"></it-number-input-button>
+        </div>
+
+        <it-form-field-error field="form[name]"></it-form-field-error>
+    </div>
+</div>
