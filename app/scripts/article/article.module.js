@@ -1,5 +1,3 @@
 'use strict';
 
-angular.module('itApp.article', [
-  'itApp'
-]);
+angular.module('itApp.article', []);

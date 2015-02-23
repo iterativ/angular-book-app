@@ -3,6 +3,7 @@
 
 	angular.module('itApp.widgets', [
 		'ui.bootstrap',
-		'ui.bootstrap.tpls'
+		'ui.bootstrap.tpls',
+    'itValidate'
 	]);
 })();
