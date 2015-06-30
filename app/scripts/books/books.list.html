@@ -3,6 +3,11 @@
         <div class="col-md-12">
             <h1>Books</h1>
 
+            <ul>
+                <li ng-repeat="book in vm.books">
+                    <a ui-sref="bookDetail({id: book.id})">{{ book.title }}</a>
+                </li>
+            </ul>
         </div>
     </div>
 </div>

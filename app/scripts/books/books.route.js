@@ -12,4 +12,17 @@ angular.module('itApp.books').config(function ($stateProvider) {
       menuTitle: 'Books'
     }
   });
+
+  $stateProvider.state('bookDetail', {
+    url: '/books/:id',
+    templateUrl: '/scripts/books/books.detail.html',
+    controller: 'BookDetailController',
+    controllerAs: 'vm',
+    resolve: {
+      book: function($stateParams, bookService) {
+        var bookId = parseInt($stateParams.id, 10);
+        return bookService.getBookDetailsById(bookId);
+      }
+    }
+  });
 });
