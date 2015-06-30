@@ -9,6 +9,7 @@ var itApp = angular.module('itApp', [
   'ui.bootstrap.tpls',
 
   'itApp.widgets',
+  'itApp.books',
   'itApp.article',
   'itApp.example'
 ]);

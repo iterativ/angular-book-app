@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('itApp.article').controller('ExampleController', ExampleController);
+angular.module('itApp.example').controller('ExampleController', ExampleController);
 
 ExampleController.$inject = ['$log'];
 

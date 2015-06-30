@@ -6,8 +6,10 @@ angular.module('itApp.article').config(function ($stateProvider) {
     templateUrl: '/scripts/article/article.list.html',
     controller: 'ArticleListController',
     controllerAs: 'vm',
-    inMenu: true,
-    menuTitle: 'Articles'
+    data: {
+      inMenu: true,
+      menuTitle: 'Articles'
+    }
   });
 
   $stateProvider.state('articledetail', {

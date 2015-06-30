@@ -8,15 +8,10 @@ function TopMenuController(_, $state) {
   var vm = this;
   vm.menuStates = filterMenuStates();
 
-  activate();
-
-  function activate() {
-  }
-
   function filterMenuStates() {
-    var menuStates = _.filter($state.get(), function (state) {
-      return state.inMenu;
+    // $state.get returns a list of all states
+    return _.filter($state.get(), function (state) {
+      return state.data && state.data.inMenu;
     });
-    return menuStates;
   }
 }

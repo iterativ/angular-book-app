@@ -20,7 +20,7 @@
                     </li>
 
                     <li ng-repeat="menuRoute in vm.menuStates">
-                        <a ui-sref="{{menuRoute.name}}" ui-sref-active="active">{{menuRoute.menuTitle}}</a>
+                        <a ui-sref="{{menuRoute.name}}" ui-sref-active="active">{{menuRoute.data.menuTitle}}</a>
                     </li>
                 </ul>
 

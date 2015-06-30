@@ -1,13 +1,15 @@
 'use strict';
 
-angular.module('itApp.article').config(function ($stateProvider) {
+angular.module('itApp.example').config(function ($stateProvider) {
 
   $stateProvider.state('examples', {
     url: '/examples',
     templateUrl: '/scripts/example/example.html',
     controller: 'ExampleController',
     controllerAs: 'vm',
-    inMenu: true,
-    menuTitle: 'Examples'
+    data: {
+      inMenu: true,
+      menuTitle: 'Examples'
+    }
   });
 });
