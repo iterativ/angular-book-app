@@ -23,6 +23,9 @@ angular.module('itApp.books').config(function ($stateProvider) {
         var bookId = parseInt($stateParams.id, 10);
         return bookService.getBookDetailsById(bookId);
       }
+    },
+    data: {
+      inMenu: false
     }
   });
 });
