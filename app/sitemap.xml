@@ -1,5 +1,9 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
   <url>
+    <loc>http://library.angularjs.space/default</loc>
+    <lastmod>2015-02-07</lastmod>
+  </url>
+  <url>
     <loc>http://library.angularjs.space/books</loc>
     <lastmod>2015-01-07</lastmod>
   </url>
