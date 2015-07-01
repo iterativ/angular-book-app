@@ -14,7 +14,7 @@ env.use_ssh_config = True
 env.user = 'cloudguru'
 env.hosts = ['iterativ.ch']
 env.remote_app = '/srv/www/%s' % NAME
-env.local_app = _local_path() + '/dist'
+env.local_app = _local_path() + '/app'
 env.rsync_exclude = ['.settings/',
                      '.project',
                      '.pydevproject',
