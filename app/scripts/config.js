@@ -13,5 +13,6 @@ angular.module('config', [])
     .constant('ENV', {
         'name': 'development',
         'esHost': 'localhost:9200',
-        'bookNotesIndex': 'booknotes'
+        'bookNotesIndex': 'booknotes',
+        'notesType': 'note'
     });

@@ -14,8 +14,14 @@
     </p>
 
     <p ng-bind-html="vm.book.searchInfo.textSnippet"></p>
-    <button ng-click="vm.buy()" type="button" class="btn btn-default">
+    <button ng-click="vm.search()" type="button" class="btn btn-default">
         <span class="glyphicon glyphicon-download">&nbsp;Download</span>
     </button>
+
+    <h3>Notes</h3>
+    <p ng-repeat="note in vm.notes">
+        {{ note.title }}
+        {{ note.note }}
+    </p>
 
 </div>
