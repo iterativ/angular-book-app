@@ -54,6 +54,8 @@
 <!-- bower:js -->
 <script src="bower_components/jquery/dist/jquery.js"></script>
 <script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/raven-js/dist/raven.min.js"></script>
+<script src="bower_components/angular-raven/angular-raven.min.js"></script>
 <script src="bower_components/angular-messages/angular-messages.js"></script>
 <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
 <script src="bower_components/angular-touch/angular-touch.js"></script>
@@ -66,6 +68,18 @@
 <script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
 <script src="bower_components/angular-it-validate/dist/itvalidate.js"></script>
 <!-- endbuild -->
+
+<!-- RAVEN Config --> 
+<script>
+  Raven.config('https://876475cd8d6147d2b13523687af3227a@app.getsentry.com/47306', {
+      // Raven settings 
+    })
+    //.setUser({
+    //  "id": "SERVER_RENDERED_ID",
+    //  "email": "SERVER_RENDERED_EMAIL"
+    //})
+    .install()
+</script> 
 
 <!-- build:js({.tmp,app}) scripts/scripts.js -->
 <script src="scripts/app.js"></script>

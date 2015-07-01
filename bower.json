@@ -15,7 +15,9 @@
     "moment": "2.10.3",
     "angular-animate": "1.4.1",
     "font-awesome": "4.3.0",
-    "angular-it-validate": "0.0.2"
+    "angular-it-validate": "0.0.2",
+    "angular-raven": "~0.5.11",
+    "raven-js": "~1.1.19"
   },
   "devDependencies": {
     "angular-mocks": "1.4.1",

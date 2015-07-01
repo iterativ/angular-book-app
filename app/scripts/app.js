@@ -3,6 +3,7 @@
 var itApp = angular.module('itApp', [
   'ngSanitize',
   'ngMessages',
+  'ngRaven',
 
   'ui.router',
   'ui.bootstrap',
