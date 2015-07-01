@@ -15,6 +15,8 @@ env.user = 'cloudguru'
 env.hosts = ['iterativ.ch']
 env.remote_app = '/srv/www/%s' % NAME
 env.local_app = _local_path() + '/app'
+env.local_dependencies = _local_path() + '/bower_components'
+env.remote_dependencies = '/srv/www/%s/%s' % (NAME, 'app')
 env.rsync_exclude = ['.settings/',
                      '.project',
                      '.pydevproject',
@@ -32,7 +34,8 @@ env.rsync_exclude = ['.settings/',
 def deploy():
 
     # build
-    local("grunt --force")
+    # no need for a 
+    # local("grunt --force")
 
     # hack to keep loading image
 
@@ -43,9 +46,20 @@ def deploy():
 
     # sources & templates
     sudo('mkdir -p %(remote_app)s' % env)
+    print '---------- Local App: %s' % env.local_app
+    print '---------- Remote App: %s' % env.remote_app
     rsync_project(
         remote_dir=env.remote_app,
         local_dir=env.local_app,
+        exclude=env.rsync_exclude,
+        extra_opts='--rsync-path="sudo rsync"'
+    )
+
+    print '---------- Local Deps: %s' % env.local_dependencies
+    print '---------- Remote Deps: %s' % env.remote_dependencies
+    rsync_project(
+        remote_dir=env.remote_dependencies,
+        local_dir=env.local_dependencies,
         exclude=env.rsync_exclude,
         extra_opts='--rsync-path="sudo rsync"'
     )
