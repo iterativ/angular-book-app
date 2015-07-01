@@ -1,0 +1,26 @@
+<urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
+  <url>
+    <loc>http://library.angularjs.space/books</loc>
+    <lastmod>2015-01-07</lastmod>
+  </url>
+  <url>
+    <loc>http://library.angularjs.space/books/1</loc>
+    <lastmod>2015-01-07</lastmod>
+  </url>
+  <url>
+    <loc>http://library.angularjs.space/books/2</loc>
+    <lastmod>2015-01-07</lastmod>
+  </url>
+  <url>
+    <loc>http://library.angularjs.space/books/3</loc>
+    <lastmod>2015-01-07</lastmod>
+  </url>
+  <url>
+    <loc>http://library.angularjs.space/books/4</loc>
+    <lastmod>2015-01-07</lastmod>
+  </url>
+  <url>
+    <loc>http://library.angularjs.space/examples</loc>
+    <lastmod>2015-01-07</lastmod>
+  </url>
+</urlset>
