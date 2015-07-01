@@ -1,9 +1,11 @@
 'use strict';
 
 var itApp = angular.module('itApp', [
+  'config',
   'ngSanitize',
   'ngMessages',
   'ngRaven',
+  'elasticsearch',
 
   'ui.router',
   'ui.bootstrap',
