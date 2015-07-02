@@ -1,7 +1,23 @@
 <div class="form-group"
-     ng-class="{'has-error': (form[name].$invalid && form[name].$dirty)}">
-    <label class="col-sm-3 control-label" ng-bind-html="label"></label>
+     ng-class="{
+        'has-error': form[name].$invalid,
+        'field-required': required
+     }">
 
-    <div class="col-sm-9" ng-transclude>
+    <label ng-if="label" class="col-md-3 control-label" ng-bind-html="label"></label>
+
+    <div class="col-md-9">
+        <ng-transclude></ng-transclude>
+
+        <div ng-if="form[name].$invalid" class="help-block">
+            <div ng-messages="form[name].$error" ng-messages-multiple ng-include="'/scripts/widgets/itFormFieldErrors.html'"></div>
+            <div ng-repeat="errorMessage in form[name].errorMessages">
+                <span ng-bind="errorMessage"></span>
+            </div>
+        </div>
+
+        <div ng-if="debug()">
+            <pre ng-bind="form[name]|json"></pre>
+        </div>
     </div>
 </div>
