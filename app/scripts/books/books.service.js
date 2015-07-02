@@ -16,7 +16,7 @@
     function getBookDetailsByIsbn(isbn) {
       var url = googleBooksBaseUrl + isbn;
       return $http.get(url).then(function(response) {
-        if(response.data.items.length > 0) {
+        if(response.data.totalItems > 0) {
           return response.data.items[0];
         }
         return {};
