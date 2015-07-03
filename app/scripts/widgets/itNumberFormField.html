@@ -22,7 +22,11 @@
                     title="{{title}}"
                     ng-model="ngModel"></it-number-input-button>
         </div>
-
-        <it-form-field-error field="form[name]"></it-form-field-error>
+        <div ng-if="form[name].$invalid" class="help-block">
+            <div ng-messages="form[name].$error" ng-messages-multiple ng-include="'/scripts/widgets/itFormFieldErrors.html'"></div>
+            <div ng-repeat="errorMessage in form[name].errorMessages">
+                <span ng-bind="errorMessage"></span>
+            </div>
+        </div>
     </div>
 </div>
