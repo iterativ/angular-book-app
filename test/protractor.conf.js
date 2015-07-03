@@ -5,7 +5,7 @@ exports.config = {
     onPrepare: function() {
         browser.manage().window().setSize(1200, 800);
     },
-    baseUrl: 'http://library.angularjs.space/',
+    baseUrl: 'http://localhost:9000/',
     capabilities: {
         'browserName': 'chrome',
     }
