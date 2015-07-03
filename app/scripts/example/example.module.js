@@ -1,5 +1,6 @@
 'use strict';
 
 angular.module('itApp.example', [
-  'itApp'
+  'itApp',
+  'itApp.widgets'
 ]);

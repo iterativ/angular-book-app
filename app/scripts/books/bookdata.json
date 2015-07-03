@@ -10,11 +10,6 @@
   "isbn": "0321812182"
 }, {
   "id": 3,
-  "title": "Speaking JavaScript",
-  "author": "Axel Rauschmayer",
-  "isbn": "1449365035"
-}, {
-  "id": 4,
   "title": "The Principles of Object-Oriented JavaScript",
   "author": "Nicholas C. Zakas",
   "isbn": "1593275404"
