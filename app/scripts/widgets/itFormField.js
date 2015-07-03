@@ -27,7 +27,7 @@
           });
         }
       },
-      templateUrl: '/scripts/widgets/itformfield.html'
+      templateUrl: '/scripts/widgets/itFormField.html'
     };
   });
 
