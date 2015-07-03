@@ -14,14 +14,55 @@
     </p>
 
     <p ng-bind-html="vm.book.searchInfo.textSnippet"></p>
-    <button ng-click="vm.search()" type="button" class="btn btn-default">
+
+    <button ng-click="vm.download()" type="button" class="btn btn-default">
         <span class="glyphicon glyphicon-download">&nbsp;Download</span>
     </button>
 
+    <button ng-click="vm.listNotes()" type="button" class="btn btn-default">
+        <span class="glyphicon glyphicon-paperclip">&nbsp;List</span>
+    </button>
+
+    <h3>Search notes</h3>
+
+    <div class="input-group">
+        <input ng-model="vm.searchText" type="text" class="form-control" placeholder="Note...">
+        <span class="input-group-btn">
+            <button ng-click="vm.searchNotes(vm.searchText)" class="btn btn-default" type="button">Search</button>
+        </span>
+    </div>
+
     <h3>Notes</h3>
-    <p ng-repeat="note in vm.notes">
-        {{ note.title }}
-        {{ note.note }}
-    </p>
+
+    <div class="bs-example" data-example-id="media-alignment">
+        <div class="media">
+            <div class="media-left">
+                <span class="margin-left-05 glyphicon glyphicon-paperclip"></span>
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading"><input ng-model="vm.newNoteTitle" type="text" class="form-control" placeholder="Note title..."></h4>
+
+                <div class="input-group">
+                    <input ng-model="vm.newNoteText" type="text" class="form-control" placeholder="Note...">
+                    <span class="input-group-btn">
+                        <button ng-click="vm.saveNote(vm.newNoteTitle, vm.newNoteText)" class="btn btn-default" type="button">Save Note!</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="media" ng-repeat="note in vm.notes">
+            <div class="media-left">
+                <span class="margin-left-05 glyphicon glyphicon-paperclip"></span>
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading">{{ note._source.title }}</h4>
+                <p>{{ note._source.note }}</p>
+            </div>
+            <div class="media-right">
+                <span ng-click="vm.deleteNote(note._id)" class="margin-left-05 glyphicon glyphicon-trash"></span>
+            </div>
+        </div>
+    </div>
+
 
 </div>
