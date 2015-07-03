@@ -15,9 +15,15 @@ Install all necessary dependencies:
 
     $ npm install
 
+Add ./node_modules/.bin/ to the PATH environment variable or create an alias 
+to run npm commands:
+    $ alias npm-exec='PATH=$(npm bin):$PATH'
+
+(If you like it, simply addd it to your ~/.bashrc)
+
 Install the necessary webdriver files:
 
-    $ webdriver-manager update
+    $ npm-exec webdriver-manager update
 
 Run Tests
 ---------
@@ -30,12 +36,12 @@ Run Tests
 
 1. Start Selenium webdriver (in a seperate terminal)
 
-        $ webdriver-manager start
+        $ npm-exec webdriver-manager start
 
 2. Run the tests
 
         $ cd test
-        $ protractor
+        $ npm-exec protractor
 
 Links
 -----
