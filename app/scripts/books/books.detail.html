@@ -40,12 +40,12 @@
                 <span class="margin-left-05 glyphicon glyphicon-paperclip"></span>
             </div>
             <div class="media-body">
-                <h4 class="media-heading"><input ng-model="vm.newNoteTitle" type="text" class="form-control" placeholder="Note title..."></h4>
-
+                <h4 class="media-heading"><input ng-model="vm.newNoteTitle" type="text" class="form-control" placeholder="Note title...">
+                <input ng-model="vm.newNoteAuthor" type="text" class="margin-top-05 form-control" placeholder="Author..."></h4>
                 <div class="input-group">
                     <input ng-model="vm.newNoteText" type="text" class="form-control" placeholder="Note...">
                     <span class="input-group-btn">
-                        <button ng-click="vm.saveNote(vm.newNoteTitle, vm.newNoteText)" class="btn btn-default" type="button">Save Note!</button>
+                        <button ng-click="vm.saveNote(vm.newNoteTitle, vm.newNoteText, vm.newNoteAuthor)" class="btn btn-default" type="button">Save Note!</button>
                     </span>
                 </div>
             </div>
@@ -55,7 +55,7 @@
                 <span class="margin-left-05 glyphicon glyphicon-paperclip"></span>
             </div>
             <div class="media-body">
-                <h4 class="media-heading">{{ note._source.title }}</h4>
+                <h4 class="media-heading">{{ note._source.title }} - {{ note._source.author }}</h4>
                 <p>{{ note._source.note }}</p>
             </div>
             <div class="media-right">

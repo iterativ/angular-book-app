@@ -12,7 +12,7 @@
 angular.module('config', [])
     .constant('ENV', {
         'name': 'development',
-        'esHost': 'localhost:9200',
+        'esHost': 'http://736223940c885939b11c6e89b3398563.eu-west-1.aws.found.io:9200',
         'bookNotesIndex': 'booknotes',
         'notesType': 'note'
     });

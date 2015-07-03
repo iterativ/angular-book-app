@@ -2,7 +2,7 @@
 
 angular.module('itApp.books').controller('BookDetailController', BookDetailController);
 
-function BookDetailController($scope, $log, book, $raven, es, ENV) {
+function BookDetailController($scope, $log, $timeout, book, $raven, bookNoteService) {
     var vm = this;
 
     vm.book = book;
@@ -16,6 +16,11 @@ function BookDetailController($scope, $log, book, $raven, es, ENV) {
     vm.download = download;
 
     activate();
+
+    $scope.$watch('vm.listNotes', function (newValue) {
+        console.log('ListNotes called');
+        console.log(newValue);
+    });
 
     function activate() {
         $log.debug('BookDetailController activated');
@@ -45,79 +50,37 @@ function BookDetailController($scope, $log, book, $raven, es, ENV) {
     }
 
     function listNotes() {
-        es.search({
-            index: ENV.bookNotesIndex,
-            type: ENV.notesType,
-            body: {
-                query: {
-                    match: {
-                        bookId: vm.book.id
-                    }
-                },
-                size: 20
-            }
-        }).then(function (resp) {
-            var hits = resp.hits.hits;
-            //vm.notes = _.pluck(hits, '_source');
-            vm.notes = hits;
-            console.log(vm.notes);
-            $scope.$apply();
-        }, function (err) {
-            console.trace(err.message);
-        });
+        bookNoteService.listNotes(vm.book.id).then(
+            function (hits) {
+                vm.notes = hits;
+            }, function (err) {
+                console.trace(err.message);
+            });
+
     }
 
     function searchNotes(searchText) {
-        es.search({
-            index: ENV.bookNotesIndex,
-            type: ENV.notesType,
-            body: {
-               query: {
-                  bool: {
-                     should: [
-                        {
-                           fuzzy: {
-                              title: searchText
-                           }
-                        },
-                        {
-                           fuzzy: {
-                              note: searchText
-                           }
-                        }
-                     ]
-                  }
-               }
-            }
-        }).then(function (resp) {
-            var hits = resp.hits.hits;
-            //vm.notes = _.pluck(hits, '_source');
-            vm.notes = hits;
-            console.log(vm.notes);
-            $scope.$apply();
-        }, function (err) {
-            console.trace(err.message);
-        });
+        bookNoteService.searchNotes(vm.book.id, searchText).then(
+            function (hits) {
+                vm.notes = hits;
+            }, function (err) {
+                console.trace(err.message);
+            });
     }
 
-    function saveNote(newNoteTitle, newNoteText) {
-        es.index({
-            index: ENV.bookNotesIndex,
-            type: ENV.notesType,
-            body: {
-                bookId: vm.book.id,
-                title: newNoteTitle,
-                note: newNoteText
-            }
-        }).then(
+    function saveNote(newNoteTitle, newNoteText, newNoteAuthor) {
+        bookNoteService.saveNote(vm.book.id, newNoteTitle, newNoteText, newNoteAuthor).then(
             function (resp) {
                 console.log("Elasticsearch response to indexing " + newNoteTitle + "...");
                 console.log(resp);
 
                 vm.newNoteTitle = null;
+                vm.newNoteAuthor = null;
                 vm.newNoteText = null;
 
-                vm.listNotes();
+                $timeout(function () {
+                    vm.listNotes();
+                }, 1000);
             },
             function (err) {
                 console.log("[ERROR] An error occurred whilst indexing: " + newNoteTitle + "...");
@@ -128,16 +91,14 @@ function BookDetailController($scope, $log, book, $raven, es, ENV) {
     }
 
     function deleteNote(noteId) {
-        es.delete({
-            index: ENV.bookNotesIndex,
-            type: ENV.notesType,
-            id: noteId
-        }).then(
+        bookNoteService.deleteNote(noteId).then(
             function (resp) {
                 console.log("Elasticsearch response to deleting " + noteId + "...");
                 console.log(resp);
 
-                vm.listNotes();
+                $timeout(function () {
+                    vm.listNotes();
+                }, 1000);
             },
             function (err) {
                 console.log("[ERROR] An error occurred whilst deleting: " + noteId + "...");
@@ -146,8 +107,5 @@ function BookDetailController($scope, $log, book, $raven, es, ENV) {
                 vm.listNotes();
             });
     }
-
-
-
 
 }
