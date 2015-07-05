@@ -74,9 +74,9 @@ function BookDetailController($scope, $log, $timeout, book, $raven, bookNoteServ
                 console.log("Elasticsearch response to indexing " + newNoteTitle + "...");
                 console.log(resp);
 
-                vm.newNoteTitle = null;
-                vm.newNoteAuthor = null;
-                vm.newNoteText = null;
+                //vm.newNoteTitle = null;
+                //vm.newNoteAuthor = null;
+                //vm.newNoteText = null;
 
                 $timeout(function () {
                     vm.listNotes();

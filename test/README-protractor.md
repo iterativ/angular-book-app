@@ -68,3 +68,54 @@ Simple Example Test Spec
       });
     });
 
+
+
+
+
+# Slides
+
+Protractor: 
+
+Locate/Select elements
+
+    // find an element using a css selector
+    by.css('.myclass') 
+    
+    // find an element with the given id
+    by.id('myid')
+    
+    // find an element with a certain ng-model
+    by.model('name')
+    
+    // find an element bound to the given variable
+    by.binding('bindingname')
+
+Pass locators to elmenet()
+
+    element(by.css('some-css'));
+    element(by.model('item.name'));
+    element(by.binding('item.name'));
+    
+Actions:
+
+    // Click on the element
+    el.click();
+    
+    // Send keys to the element (usually an input)
+    el.sendKeys('my text');
+    
+    // Clear the text in an element (usually an input)
+    el.clear();
+    
+    // Get the value of an attribute, for example, get the value of an input
+    el.getAttribute('value');
+   
+Promises:
+    
+    var el = element(locator);
+    el.getText().then(function(text) {
+      console.log(text);
+    });
+    
+    
+    element(by.css('some-css')).element(by.tagName('tag-within-css'));
