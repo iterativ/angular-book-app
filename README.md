@@ -1,4 +1,4 @@
-# AngularJS Best Practices Demo Application
+# AngularJS Book Demo Application
 
 ### Install needed libraries
 
