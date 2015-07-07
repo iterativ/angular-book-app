@@ -1,0 +1,10 @@
+<div class="modal-header">
+    <h3 class="modal-title" ng-bind="vm.texts.title"></h3>
+</div>
+<div class="modal-body">
+    <p ng-bind-html="vm.texts.bodyText"></p>
+</div>
+<div class="modal-footer">
+    <button class="btn" ng-class="vm.props.okClass" ng-click="vm.ok()" ng-bind="vm.texts.okText"></button>
+    <button class="btn" ng-class="vm.props.cancelClass" ng-click="vm.cancel()" ng-bind="vm.texts.cancelText"></button>
+</div>
