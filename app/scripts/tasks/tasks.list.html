@@ -1,0 +1,26 @@
+<div class="container">
+    <h2>Tasks</h2>
+
+    <input ng-model="vm.taskInput" class="form-control" placeholder="task">
+
+    <br>
+
+    <button ng-disabled="vm.tasks.length >= 5" class="btn btn-primary" ng-click="vm.addTask()">
+        Add Task
+    </button>
+
+    <br>
+    <br>
+
+    <div ng-hide="vm.tasks.length > 0">
+        Kein Task
+    </div>
+
+    <ul>
+        <li ng-repeat="task in vm.tasks">
+        <span ng-class="{'task-done': task.done}" ng-click="vm.clickTask(task, $index)">
+         {{task.name}}
+        </span>
+        </li>
+    </ul>
+</div>
