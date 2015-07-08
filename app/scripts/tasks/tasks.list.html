@@ -1,13 +1,58 @@
 <div class="container">
     <h2>Tasks</h2>
 
-    <input ng-model="vm.taskInput" class="form-control" placeholder="task">
+    <form novalidate name="vm.form" ng-submit="vm.addTask()">
+
+        <div class="form-group has-feedback"
+             ng-class="{'has-error': vm.form.taskInput.$invalid, 'has-success': vm.form.taskInput.$valid}">
+            <label class="control-label">Task</label>
+            <input name="taskInput" ng-required="true" ng-minlength="3" ng-model="vm.taskInput" type="text"
+                   class="form-control" placeholder="task">
+
+            <span ng-if="vm.form.taskInput.$invalid" class="glyphicon glyphicon-remove form-control-feedback"
+                  aria-hidden="true"></span>
+            <span ng-if="vm.form.taskInput.$valid" class="glyphicon glyphicon-ok form-control-feedback"
+                  aria-hidden="true"></span>
+
+            <div ng-messages="vm.form.taskInput.$error" ng-messages-multiple class="help-block">
+                <div ng-message="required">Dieses Feld wird zwingend benötigt</div>
+                <div ng-message="minlength">Die Minimallänge für dieses Feld ist 3</div>
+            </div>
+        </div>
+
+        <div class="form-group has-feedback"
+             ng-class="{'has-error': vm.form.email.$invalid, 'has-success': vm.form.email.$valid}">
+            <label class="control-label">Email</label>
+            <input name="email"
+                   ng-required="true"
+                   ng-minlength="10"
+                   ng-maxlength="30"
+                   ng-pattern="/.*@akros.ch/"
+                   ng-model="vm.user.email"
+                   type="email" class="form-control" placeholder="Email">
+
+            <span ng-if="vm.form.email.$invalid" class="glyphicon glyphicon-remove form-control-feedback"
+                  aria-hidden="true"></span>
+            <span ng-if="vm.form.email.$valid" class="glyphicon glyphicon-ok form-control-feedback"
+                  aria-hidden="true"></span>
+
+            <div ng-messages="vm.form.email.$error" ng-messages-multiple class="help-block">
+                <div ng-message="required">Dieses Feld wird zwingend benötigt</div>
+                <div ng-message="minlength">Die Minimallänge für dieses Feld ist 10</div>
+                <div ng-message="maxlength">Die Maximallänge für dieses Feld ist 30</div>
+                <div ng-message="pattern">Bitte gültige akros.ch Email Adresse eingeben</div>
+           </div>
+
+            <pre>
+                {{ vm.form.email|json }}
+            </pre>
+        </div>
+
+        <button ng-disabled="vm.form.$invalid" type="submit" class="btn btn-primary">Task hinzufügen</button>
+    </form>
 
     <br>
 
-    <button class="btn btn-primary" ng-click="vm.addTask()">
-        Add Task
-    </button>
 
     <br>
     <br>
