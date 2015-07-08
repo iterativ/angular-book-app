@@ -1,71 +1,46 @@
 <div class="container">
-    <h2>Tasks</h2>
+    <div class="row">
+        <h2>Tasks</h2>
 
-    <form novalidate name="vm.form" ng-submit="vm.addTask()">
+        <form class="form-horizontal" novalidate name="vm.form" ng-submit="vm.addTask()">
 
-        <div class="form-group has-feedback"
-             ng-class="{'has-error': vm.form.taskInput.$invalid, 'has-success': vm.form.taskInput.$valid}">
-            <label class="control-label">Task</label>
-            <input name="taskInput" ng-required="true" ng-minlength="3" ng-model="vm.taskInput" type="text"
-                   class="form-control" placeholder="task">
+            <it-form-field label="Name">
+                <input name="taskInput"
+                       ng-model="taskInput"
+                       type="text"
+                       ng-minlength="3"
+                       ng-required="true"/>
+            </it-form-field>
 
-            <span ng-if="vm.form.taskInput.$invalid" class="glyphicon glyphicon-remove form-control-feedback"
-                  aria-hidden="true"></span>
-            <span ng-if="vm.form.taskInput.$valid" class="glyphicon glyphicon-ok form-control-feedback"
-                  aria-hidden="true"></span>
+            <it-form-field label="Email">
+                <input name="email"
+                       ng-model="email"
+                       type="email"
+                       ng-pattern="/.*@akros.ch/"
+                       ng-minlength="10"
+                       ng-maxlength="30"
+                       ng-required="true"/>
+            </it-form-field>
 
-            <div ng-messages="vm.form.taskInput.$error" ng-messages-multiple class="help-block">
-                <div ng-message="required">Dieses Feld wird zwingend benötigt</div>
-                <div ng-message="minlength">Die Minimallänge für dieses Feld ist 3</div>
-            </div>
+            <button ng-disabled="vm.form.$invalid" type="submit" class="btn btn-primary">Task hinzufügen</button>
+        </form>
+
+        <br>
+
+
+        <br>
+        <br>
+
+        <div ng-hide="vm.tasks.length > 0">
+            Kein Task
         </div>
 
-        <div class="form-group has-feedback"
-             ng-class="{'has-error': vm.form.email.$invalid, 'has-success': vm.form.email.$valid}">
-            <label class="control-label">Email</label>
-            <input name="email"
-                   ng-required="true"
-                   ng-minlength="10"
-                   ng-maxlength="30"
-                   ng-pattern="/.*@akros.ch/"
-                   ng-model="vm.user.email"
-                   type="email" class="form-control" placeholder="Email">
-
-            <span ng-if="vm.form.email.$invalid" class="glyphicon glyphicon-remove form-control-feedback"
-                  aria-hidden="true"></span>
-            <span ng-if="vm.form.email.$valid" class="glyphicon glyphicon-ok form-control-feedback"
-                  aria-hidden="true"></span>
-
-            <div ng-messages="vm.form.email.$error" ng-messages-multiple class="help-block">
-                <div ng-message="required">Dieses Feld wird zwingend benötigt</div>
-                <div ng-message="minlength">Die Minimallänge für dieses Feld ist 10</div>
-                <div ng-message="maxlength">Die Maximallänge für dieses Feld ist 30</div>
-                <div ng-message="pattern">Bitte gültige akros.ch Email Adresse eingeben</div>
-           </div>
-
-            <pre>
-                {{ vm.form.email|json }}
-            </pre>
-        </div>
-
-        <button ng-disabled="vm.form.$invalid" type="submit" class="btn btn-primary">Task hinzufügen</button>
-    </form>
-
-    <br>
-
-
-    <br>
-    <br>
-
-    <div ng-hide="vm.tasks.length > 0">
-        Kein Task
-    </div>
-
-    <ul>
-        <li ng-repeat="task in vm.tasks">
+        <ul>
+            <li ng-repeat="task in vm.tasks">
         <span ng-class="{'task-done': task.done}" ng-click="vm.clickTask(task, $index)">
          {{task.name}}
         </span>
-        </li>
-    </ul>
+            </li>
+        </ul>
+    </div>
 </div>
