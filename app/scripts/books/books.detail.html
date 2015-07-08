@@ -1,19 +1,7 @@
-<img class="book-thumbnail" ng-src="{{ vm.book.volumeInfo.imageLinks.smallThumbnail }}"/>
+<img class="book-thumbnail" ng-click="vm.clickImage()" ng-src="{{ vm.book.volumeInfo.imageLinks.smallThumbnail }}"/>
 
 <div class="book-details">
-    <h3>{{ vm.book.volumeInfo.title }}</h3>
-
-    <p>
-        {{ vm.book.volumeInfo.publishedDate}}
-        <br/>
-        <span ng-repeat="author in vm.book.volumeInfo.authors">
-            {{ author }}
-        </span>
-        <br/>
-        {{ vm.book.volumeInfo.publisher }}
-    </p>
-
-    <p ng-bind-html="vm.book.searchInfo.textSnippet"></p>
+    <it-book book="vm.book" collapsed="vm.collapsed"></it-book>
 
     <button ng-click="vm.download()" type="button" class="btn btn-default">
         <span class="glyphicon glyphicon-download">&nbsp;Download</span>

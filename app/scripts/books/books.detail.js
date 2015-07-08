@@ -15,12 +15,18 @@ function BookDetailController($scope, $log, $timeout, book, $raven, bookNoteServ
     vm.deleteNote = deleteNote;
     vm.download = download;
 
+    vm.collapsed = true;
+
     activate();
 
     $scope.$watch('vm.listNotes', function (newValue) {
         console.log('ListNotes called');
         console.log(newValue);
     });
+
+    vm.clickImage = function() {
+        vm.collapsed = !vm.collapsed;
+    };
 
     function activate() {
         $log.debug('BookDetailController activated');

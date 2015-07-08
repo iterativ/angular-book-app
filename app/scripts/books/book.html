@@ -1,0 +1,20 @@
+<div class="panel panel-default">
+    <div class="panel-heading" ng-click="clickHeader()">
+        <h3 class="panel-title">
+            {{ book.volumeInfo.title }}
+        </h3>
+    </div>
+    <div class="panel-body" ng-hide="collapsed">
+        <p>
+            {{ book.volumeInfo.publishedDate}}
+            <br/>
+        <span ng-repeat="author in book.volumeInfo.authors">
+            {{ author }}
+        </span>
+            <br/>
+            {{ book.volumeInfo.publisher }}
+        </p>
+
+        <p ng-bind-html="book.searchInfo.textSnippet"></p>
+    </div>
+</div>
