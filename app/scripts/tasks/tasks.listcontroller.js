@@ -3,7 +3,7 @@
 
   angular.module('itApp.tasks').controller('TaskListController', TaskListController);
 
-  function TaskListController(tasksService, dialogService) {
+  function TaskListController(dialogService, tasksService) {
     var vm = this;
     vm.tasks = [];
     vm.taskInput = '';
@@ -31,7 +31,7 @@
     };
 
     vm.clickTask = function(task, index) {
-      if(task._source.done) {
+      if(task.done) {
         dialogService.openConfirmDialog({
           bodyText: 'Wollen Sie den Taks wirklich löschen?'
         }).then(function() {
@@ -41,7 +41,7 @@
         });
       }
       else {
-        task._source.done = true;
+        task.done = true;
         tasksService.updateTask(task).then(function(tasks) {
           vm.tasks = tasks;
         })

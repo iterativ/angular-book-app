@@ -15,7 +15,13 @@
           size: 200
         }
       }).then(function (resp) {
-        return resp.hits.hits;
+        return _.map(resp.hits.hits, function(t) {
+          return {
+            elasticId: t._id,
+            name: t._source.name,
+            done: t._source.done
+          }
+        });
       });
     }
 
@@ -37,8 +43,11 @@
       return es.index({
         index: ENV.tasksIndex,
         type: ENV.tasksType,
-        id: task._id,
-        body: task._source
+        id: task.elasticId,
+        body: {
+          name: task.name,
+          done: task.done
+        }
       }).then(function (resp) {
         return $timeout(function() {
           return getTasks();
@@ -53,7 +62,7 @@
       return es.delete({
         index: ENV.tasksIndex,
         type: ENV.tasksType,
-        id: id
+        id: task.elasticId
       }).then(function (resp) {
         return $timeout(function() {
           return getTasks();

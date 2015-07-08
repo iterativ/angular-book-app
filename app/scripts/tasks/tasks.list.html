@@ -18,8 +18,8 @@
 
     <ul>
         <li ng-repeat="task in vm.tasks">
-        <span ng-class="{'task-done': task._source.done}" ng-click="vm.clickTask(task, $index)">
-         {{task._source.name}}
+        <span ng-class="{'task-done': task.done}" ng-click="vm.clickTask(task, $index)">
+         {{task.name}}
         </span>
         </li>
     </ul>
