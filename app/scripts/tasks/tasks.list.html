@@ -5,7 +5,7 @@
 
     <br>
 
-    <button ng-disabled="vm.tasks.length >= 5" class="btn btn-primary" ng-click="vm.addTask()">
+    <button class="btn btn-primary" ng-click="vm.addTask()">
         Add Task
     </button>
 
@@ -18,8 +18,8 @@
 
     <ul>
         <li ng-repeat="task in vm.tasks">
-        <span ng-class="{'task-done': task.done}" ng-click="vm.clickTask(task, $index)">
-         {{task.name}}
+        <span ng-class="{'task-done': task._source.done}" ng-click="vm.clickTask(task, $index)">
+         {{task._source.name}}
         </span>
         </li>
     </ul>

@@ -3,44 +3,61 @@
 
   angular.module('itApp.tasks').factory('tasksService', taskService);
 
-  function taskService($q, $http, es, ENV) {
-
+  function taskService($q, $http, es, ENV, $timeout) {
     function getTasks() {
-        return es.search({
-            index: ENV.tasksIndex,
-            type: ENV.tasksType,
-            body: {
-                query: {
-                    match_all: {
-                    }
-                },
-                size: 20
-            }
-        }).then(function (resp) {
-            return _.pluck(resp.hits.hits, '_source');
-        }, function (err) {
-            return err;
-        });
+      return es.search({
+        index: ENV.tasksIndex,
+        type: ENV.tasksType,
+        body: {
+          query: {
+            match_all: {}
+          },
+          size: 200
+        }
+      }).then(function (resp) {
+        return resp.hits.hits;
+      });
     }
 
     function addTask(task) {
-      return getTasks().then(function(tasks) {
-
-
+      return es.index({
+        index: ENV.tasksIndex,
+        type: ENV.tasksType,
+        body: task
+      }).then(function (resp) {
+        return $timeout(function() {
+          return getTasks();
+        }, 1000);
+      }, function (err) {
+        return err;
       });
     }
 
     function updateTask(task) {
-      return getTasks().then(function(tasks) {
-
-
+      return es.index({
+        index: ENV.tasksIndex,
+        type: ENV.tasksType,
+        id: task._id,
+        body: task._source
+      }).then(function (resp) {
+        return $timeout(function() {
+          return getTasks();
+        }, 1000);
+      }, function (err) {
+        return err;
       });
     }
 
     function removeTask(task) {
-      return getTasks().then(function(tasks) {
-
-
+      var id = task._id;
+      return es.delete({
+        index: ENV.tasksIndex,
+        type: ENV.tasksType,
+        id: id
+      }).then(function (resp) {
+        return $timeout(function() {
+          return getTasks();
+        }, 1000);
       });
     }
 

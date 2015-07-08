@@ -86,7 +86,9 @@
                     note: newNoteText
                 }
             }).then(function (resp) {
+              return $timeout(function() {
                 return resp;
+              }, 1000);
             }, function (err) {
                 return err;
             });
@@ -98,7 +100,9 @@
                 type: ENV.notesType,
                 id: noteId
             }).then(function (resp) {
-                return resp;
+                return $timeout(function() {
+                  return resp;
+                }, 1000);
             }, function (err) {
                 return err;
             });

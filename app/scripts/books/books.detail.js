@@ -78,9 +78,7 @@ function BookDetailController($scope, $log, $timeout, book, $raven, bookNoteServ
                 vm.newNoteAuthor = null;
                 vm.newNoteText = null;
 
-                $timeout(function () {
-                    vm.listNotes();
-                }, 1000);
+                vm.listNotes();
             },
             function (err) {
                 console.log("[ERROR] An error occurred whilst indexing: " + newNoteTitle + "...");
@@ -96,15 +94,7 @@ function BookDetailController($scope, $log, $timeout, book, $raven, bookNoteServ
                 console.log("Elasticsearch response to deleting " + noteId + "...");
                 console.log(resp);
 
-                $timeout(function () {
-                    vm.listNotes();
-                }, 1000);
-            },
-            function (err) {
-                console.log("[ERROR] An error occurred whilst deleting: " + noteId + "...");
-                console.log(err.message);
-
-                vm.listNotes();
+              vm.listNotes();
             });
     }
 
