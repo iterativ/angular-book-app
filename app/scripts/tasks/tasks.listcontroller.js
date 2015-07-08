@@ -3,7 +3,7 @@
 
   angular.module('itApp.tasks').controller('TaskListController', TaskListController);
 
-  function TaskListController(dialogService, tasksService) {
+  function TaskListController(tasksService) {
     var vm = this;
     vm.tasks = [];
     vm.taskInput = '';
@@ -32,13 +32,13 @@
 
     vm.clickTask = function(task, index) {
       if(task.done) {
-        dialogService.openConfirmDialog({
-          bodyText: 'Wollen Sie den Taks wirklich löschen?'
-        }).then(function() {
-          tasksService.removeTask(task).then(function(tasks) {
-            vm.tasks = tasks;
-          });
-        });
+        //dialogService.openConfirmDialog({
+        //  bodyText: 'Wollen Sie den Taks wirklich löschen?'
+        //}).then(function() {
+        //  tasksService.removeTask(task).then(function(tasks) {
+        //    vm.tasks = tasks;
+        //  });
+        //});
       }
       else {
         task.done = true;

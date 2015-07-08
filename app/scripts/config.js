@@ -14,5 +14,7 @@ angular.module('config', [])
         'name': 'development',
         'esHost': 'http://736223940c885939b11c6e89b3398563.eu-west-1.aws.found.io:9200',
         'bookNotesIndex': 'booknotes',
-        'notesType': 'note'
+        'notesType': 'note',
+        'tasksIndex': 'tasks',
+        'tasksType': 'task'
     });

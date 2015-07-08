@@ -3,48 +3,44 @@
 
   angular.module('itApp.tasks').factory('tasksService', taskService);
 
-  function taskService($q, $http) {
-    var cachedTasks = null;
+  function taskService($q, $http, es, ENV) {
 
     function getTasks() {
-      if(cachedTasks) {
-        return $q.when(cachedTasks);
-      }
-      else {
-        return $http.get('/scripts/tasks/tasks.json').then(function(response) {
-          cachedTasks = _.map(response.data, function(t) {
-            t.cid = _.uniqueId('task_');
-            return t;
-          });
-          return cachedTasks;
+        return es.search({
+            index: ENV.tasksIndex,
+            type: ENV.tasksType,
+            body: {
+                query: {
+                    match_all: {
+                    }
+                },
+                size: 20
+            }
+        }).then(function (resp) {
+            return _.pluck(resp.hits.hits, '_source');
+        }, function (err) {
+            return err;
         });
-      }
     }
 
     function addTask(task) {
       return getTasks().then(function(tasks) {
-        task.cid = _.uniqueId('task_');
-        cachedTasks.push(task);
-        return cachedTasks;
+
+
       });
     }
 
     function updateTask(task) {
       return getTasks().then(function(tasks) {
-        var cachedTask = _.find(tasks, {cid: task.cid});
-        angular.merge(cachedTask, task);
-        cachedTasks = tasks;
-        return cachedTasks;
+
+
       });
     }
 
     function removeTask(task) {
       return getTasks().then(function(tasks) {
-        _.remove(tasks, function(t) {
-          return t.cid === task.cid;
-        });
-        cachedTasks = tasks;
-        return cachedTasks;
+
+
       });
     }
 
