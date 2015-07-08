@@ -23,8 +23,12 @@
                   name="form"
                   ng-submit="vm.submit(form.$valid)">
 
-                <it-form-field label="Name" form="form" debug="false">
-                    <input name="name" ng-model="name" type="text" ng-required="true"/>
+                <it-form-field label="Name">
+                    <input name="name"
+                           ng-model="name"
+                           type="text"
+                           ng-minlength="3"
+                           ng-required="true"/>
                 </it-form-field>
 
                 <it-number-form-field
@@ -35,6 +39,8 @@
                     ng-required="true"
                     form="form">
                 </it-number-form-field>
+
+                <button ng-disabled="form.$invalid" class="btn btn-primary">Senden</button>
 
             </form>
 

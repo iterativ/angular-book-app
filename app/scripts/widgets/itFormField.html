@@ -1,6 +1,7 @@
-<div class="form-group"
+<div class="form-group has-feedback"
      ng-class="{
-        'has-error': form[name].$invalid,
+        'has-success': form[name].$valid && form[name].$dirty,
+        'has-error': form[name].$invalid && form[name].$dirty,
         'field-required': required
      }">
 
@@ -8,8 +9,10 @@
 
     <div class="col-md-9">
         <ng-transclude></ng-transclude>
+        <span ng-if="form[name].$invalid" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+        <span ng-if="form[name].$valid" class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
 
-        <div ng-if="form[name].$invalid" class="help-block">
+        <div ng-if="form[name].$invalid && form[name].$dirty" class="help-block">
             <div ng-messages="form[name].$error" ng-messages-multiple ng-include="'/scripts/widgets/itFormFieldErrors.html'"></div>
             <div ng-repeat="errorMessage in form[name].errorMessages">
                 <span ng-bind="errorMessage"></span>
