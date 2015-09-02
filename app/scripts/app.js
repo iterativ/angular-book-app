@@ -30,7 +30,10 @@ itApp.directive('customInput', function() {
   };
 });
 
-itApp.config(function ($stateProvider, $urlRouterProvider) {
+itApp.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
+
+  $locationProvider.html5Mode(true).hashPrefix('!');
+
   $stateProvider.state('default', {
     url: '/default',
     templateUrl: '/scripts/core/default.html',
