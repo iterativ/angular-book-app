@@ -8,7 +8,6 @@ describe('On the Examples page a user', function() {
         link.click();
     });
 
-
     it('can enter numbers in a number field', function() {
         var nameInput = element(by.model('name'));
         nameInput.sendKeys('Hans');
