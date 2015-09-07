@@ -36,6 +36,6 @@
     return {
       getBooks: getBooks,
       getBookDetailsById: getBookDetailsById
-    }
+    };
   }
 }());

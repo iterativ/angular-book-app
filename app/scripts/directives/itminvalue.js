@@ -11,7 +11,7 @@ angular.module('itApp').directive('itMinvalue', [function() {
 
       var minvalue = 0;
 
-      scope.$watch(attr['itMinvalue'], function ngAttrAliasWatchAction(value) {
+      scope.$watch(attr.itMinvalue, function ngAttrAliasWatchAction(value) {
         attr.$set('minvalue', value);
       });
 

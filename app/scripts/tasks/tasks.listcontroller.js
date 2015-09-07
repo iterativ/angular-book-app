@@ -44,7 +44,7 @@
         task.done = true;
         tasksService.updateTask(task).then(function(tasks) {
           vm.tasks = tasks;
-        })
+        });
       }
     };
 
