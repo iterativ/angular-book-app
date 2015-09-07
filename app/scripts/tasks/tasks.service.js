@@ -5,6 +5,7 @@
 
   function taskService($q, $http, es, ENV, $timeout) {
     function getTasks() {
+      /*jshint camelcase: false */
       return es.search({
         index: ENV.tasksIndex,
         type: ENV.tasksType,
@@ -20,7 +21,7 @@
             elasticId: t._id,
             name: t._source.name,
             done: t._source.done
-          }
+          };
         });
       });
     }
@@ -58,7 +59,6 @@
     }
 
     function removeTask(task) {
-      var id = task._id;
       return es.delete({
         index: ENV.tasksIndex,
         type: ENV.tasksType,
@@ -75,7 +75,7 @@
       updateTask: updateTask,
       removeTask: removeTask,
       addTask: addTask
-    }
+    };
   }
 
 }());
