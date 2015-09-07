@@ -77,7 +77,7 @@ function BookDetailController($scope, $log, $timeout, book, $raven, bookNoteServ
     function saveNote(newNoteTitle, newNoteText, newNoteAuthor) {
         bookNoteService.saveNote(vm.book.id, newNoteTitle, newNoteText, newNoteAuthor).then(
             function (resp) {
-                console.log("Elasticsearch response to indexing " + newNoteTitle + "...");
+                console.log('Elasticsearch response to indexing ' + newNoteTitle + '...');
                 console.log(resp);
 
                 vm.newNoteTitle = null;
@@ -87,7 +87,7 @@ function BookDetailController($scope, $log, $timeout, book, $raven, bookNoteServ
                 vm.listNotes();
             },
             function (err) {
-                console.log("[ERROR] An error occurred whilst indexing: " + newNoteTitle + "...");
+                console.log('[ERROR] An error occurred whilst indexing: ' + newNoteTitle + '...');
                 console.log(err.message);
 
                 vm.listNotes();
@@ -97,7 +97,7 @@ function BookDetailController($scope, $log, $timeout, book, $raven, bookNoteServ
     function deleteNote(noteId) {
         bookNoteService.deleteNote(noteId).then(
             function (resp) {
-                console.log("Elasticsearch response to deleting " + noteId + "...");
+                console.log('Elasticsearch response to deleting ' + noteId + '...');
                 console.log(resp);
 
               vm.listNotes();

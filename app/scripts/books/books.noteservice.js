@@ -13,7 +13,7 @@
     angular.module('itApp.books').factory('bookNoteService', bookNoteService);
 
 
-    function bookNoteService($http, es, ENV) {
+    function bookNoteService($http, $timeout, es, ENV) {
 
         function listNotes(bookId) {
             return es.search({
@@ -56,8 +56,7 @@
                                         }
                                     ]
                                 }
-                            }
-                            ,
+                            },
                             filter: {
                                 query: {
                                     match: {
@@ -113,6 +112,6 @@
             searchNotes: searchNotes,
             saveNote: saveNote,
             deleteNote: deleteNote
-        }
+        };
     }
 }());

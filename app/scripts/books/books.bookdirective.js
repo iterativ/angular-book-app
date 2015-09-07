@@ -12,8 +12,8 @@
       controller: function($scope) {
         $scope.clickHeader = function() {
           $scope.collapsed = !$scope.collapsed;
-        }
+        };
       }
-    }
-  })
+    };
+  });
 }());

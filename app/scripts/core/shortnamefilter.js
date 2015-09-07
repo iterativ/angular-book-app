@@ -1,4 +1,6 @@
 (function() {
+  'use strict';
+
   angular.module('itApp').filter('shortname', function() {
     return function(input, num) {
       input = input || '';
