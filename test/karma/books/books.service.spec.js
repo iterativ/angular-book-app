@@ -5,7 +5,6 @@ describe('books.service', function () {
   var bookService;
   var mockHttpBackend;
 
-  // load the controller's module
   beforeEach(module('itApp'));
 
   beforeEach(inject(function(_bookService_, $httpBackend) {
@@ -13,11 +12,7 @@ describe('books.service', function () {
     mockHttpBackend = $httpBackend;
   }));
 
-  beforeEach(function() {
-
-  });
-
-  it('should fail', function () {
+  it('calls the google books API with the correct URL', function () {
     var result = null;
 
     bookService.getBookDetailsByIsbn('0596517742').then(function(bookData) {
@@ -27,7 +22,5 @@ describe('books.service', function () {
     mockHttpBackend.expectGET('https://www.googleapis.com/books/v1/volumes?q=isbn:0596517742').respond({});
 
     mockHttpBackend.flush();
-
   });
-
 });

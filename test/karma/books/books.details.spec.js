@@ -21,7 +21,7 @@ describe('books.detailController', function () {
     });
   }));
 
-  it('call of saveNote will call bookNoteService with the correct parameters', function () {
+  it('call of saveNote() will call bookNoteService.saveNote() with the correct parameters', function () {
     spyOn(bookNoteService, 'saveNote').and.returnValue($q.when({}));
 
     bookController.saveNote('title', 'text', 'author');
