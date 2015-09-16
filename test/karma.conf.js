@@ -18,19 +18,38 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
+      'bower_components/jquery/dist/jquery.js',
       'bower_components/angular/angular.js',
-      'bower_components/angular-mocks/angular-mocks.js',
       'bower_components/angular-animate/angular-animate.js',
-      'bower_components/angular-aria/angular-aria.js',
-      'bower_components/angular-cookies/angular-cookies.js',
+      'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
       'bower_components/angular-messages/angular-messages.js',
-      'bower_components/angular-resource/angular-resource.js',
-      'bower_components/angular-route/angular-route.js',
+      'bower_components/raven-js/dist/raven.js',
+      'bower_components/angular-raven/angular-raven.js',
       'bower_components/angular-sanitize/angular-sanitize.js',
       'bower_components/angular-touch/angular-touch.js',
+      'bower_components/angular-ui-router/release/angular-ui-router.js',
+      'bower_components/elasticsearch/elasticsearch.js',
+      'bower_components/lodash/lodash.js',
+      'bower_components/moment/moment.js',
+      'bower_components/angular-bootstrap/ui-bootstrap.js',
+      'bower_components/angular-it-validate/dist/itvalidate.js',
+      'bower_components/elasticsearch/elasticsearch.angular.js',
+
+      'bower_components/angular-mocks/angular-mocks.js',
+
+      // all angular module definition files needs to get loaded first
+      'app/scripts/app.js',
+      'app/scripts/books/books.module.js',
+      'app/scripts/dialog/dialog.module.js',
+      'app/scripts/example/example.module.js',
+      'app/scripts/tasks/tasks.module.js',
+      'app/scripts/widgets/widgets.module.js',
+
       'app/scripts/**/*.js',
+
       'test/mock/**/*.js',
-      'test/spec/**/*.js'
+
+      'test/karma/**/*.js'
     ],
 
     // list of files / patterns to exclude
