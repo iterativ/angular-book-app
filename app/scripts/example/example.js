@@ -7,6 +7,8 @@ ExampleController.$inject = ['$log'];
 function ExampleController($log) {
   var vm = this;
 
+  vm.testData = ['a', 'b', 'c'];
+
   vm.mouseOver = function() {
     $log.debug('mouseOver in ExampleController');
   };

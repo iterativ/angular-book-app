@@ -14,7 +14,7 @@ angular.module('itApp.books').config(function ($stateProvider) {
   });
 
   $stateProvider.state('books.detail', {
-    url: '/:id',
+    params: {id: ''},
     templateUrl: '/scripts/books/books.detail.html',
     controller: 'BookDetailController',
     controllerAs: 'vm',
