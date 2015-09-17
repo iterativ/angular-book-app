@@ -14,7 +14,6 @@ var itApp = angular.module('itApp', [
   'itApp.widgets',
   'itApp.dialog',
   'itApp.books',
-  'itApp.tasks',
   'itApp.example'
 ]);
 

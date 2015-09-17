@@ -1,7 +1,27 @@
 <img class="book-thumbnail" ng-click="vm.clickImage()" ng-src="{{ vm.book.volumeInfo.imageLinks.smallThumbnail }}"/>
 
 <div class="book-details">
-    <it-book book="vm.book" collapsed="vm.collapsed"></it-book>
+    <!--<it-book book="vm.book" collapsed="vm.collapsed"></it-book>-->
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                {{ vm.book.volumeInfo.title }}
+            </h3>
+        </div>
+        <div class="panel-body" ng-hide="collapsed">
+            <p>
+                {{ vm.book.volumeInfo.publishedDate}}
+                <br/>
+        <span ng-repeat="author in vm.book.volumeInfo.authors">
+            {{ author }}
+        </span>
+                <br/>
+                {{ vm.book.volumeInfo.publisher }}
+            </p>
+
+            <p ng-bind-html="vm.book.searchInfo.textSnippet"></p>
+        </div>
+    </div>
 
     <button ng-click="vm.download()" type="button" class="btn btn-default">
         <span class="glyphicon glyphicon-download">&nbsp;Download</span>
