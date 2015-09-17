@@ -69,14 +69,13 @@ Simple Example Test Spec
     });
 
 
-
-
-
 # Slides
 
-Protractor: 
+Protractor:
+-----------
 
-Locate/Select elements
+Locate/Select elements:
+-----------------------
 
     // find an element using a css selector
     by.css('.myclass') 
@@ -91,12 +90,14 @@ Locate/Select elements
     by.binding('bindingname')
 
 Pass locators to elmenet()
+--------------------------
 
     element(by.css('some-css'));
     element(by.model('item.name'));
     element(by.binding('item.name'));
     
 Actions:
+--------
 
     // Click on the element
     el.click();
@@ -111,6 +112,7 @@ Actions:
     el.getAttribute('value');
    
 Promises:
+---------
     
     var el = element(locator);
     el.getText().then(function(text) {
@@ -119,3 +121,21 @@ Promises:
     
     
     element(by.css('some-css')).element(by.tagName('tag-within-css'));
+    
+Live Editing
+------------
+
+    $ protractor --elementExplorer
+    
+    > browser.get('http://dev.myservicecrm.ch');
+    > var usernameField = element(by.id('id_identification'));
+    > var passwordField = element(by.id('id_password'));
+    > var submit = element(by.css('button[type=submit]'));
+    > usernameField.sendKeys('walter-gottheil');
+    > passwordField.sendKeys('test');
+    > submit.click().then(function(){});
+    
+    > var search = element(by.id('id_q'));
+    > search.sendKeys('pawel').then(function(){});
+    
+    
