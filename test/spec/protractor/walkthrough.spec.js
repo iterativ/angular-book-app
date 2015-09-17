@@ -55,7 +55,7 @@ describe('In walkthroug trough the Best-Practice App a user can', function() {
                 var button = element(by.buttonText('Save Note!'));
 
                 button.click().then(function() {
-                    browser.pause();
+                    //browser.pause();
                     var note = element(by.repeater('note in vm.notes'));
                 });
 
