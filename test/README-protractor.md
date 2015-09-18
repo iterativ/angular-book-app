@@ -69,9 +69,6 @@ Simple Example Test Spec
     });
 
 
-
-
-
 # Slides
 
 Protractor: 
@@ -119,3 +116,67 @@ Promises:
     
     
     element(by.css('some-css')).element(by.tagName('tag-within-css'));
+
+
+Live Editing
+------------
+
+    $ protractor --elementExplorer
+    
+    > browser.get('http://dev.myservicecrm.ch');
+    > var usernameField = element(by.id('id_identification'));
+    > var passwordField = element(by.id('id_password'));
+    > var submit = element(by.css('button[type=submit]'));
+    > usernameField.sendKeys('walter-gottheil');
+    > passwordField.sendKeys('test');
+    > submit.click().then(function(){});
+    
+    > var search = element(by.id('id_q'));
+    > search.sendKeys('pawel').then(function(){});
+    
+  Some usage patterns:
+  --------------------
+    
+    > browser.navigate().back();
+    > browser.navigate().forward();
+    > browser.navigate().refresh();
+    
+    https://github.com/angular/jasminewd
+    
+  Some assertions:
+  ----------------
+
+    > browser.get('/');
+    >   browser.getTitle();
+    >   Suchen | MyService CRM
+    >   expect(browser.getTitle()).toEqual('Suchen | MyService CRM');
+    > 
+    > browser.get('/client/create');
+    >   browser.getTitle();
+    >   Erfassen | MyService CRM
+    
+  Clicking around:
+  ----------------
+
+    > $('.navbar-toggle').click()
+    > browser.actions().mouseMove($('.navbar-toggle')).perform();
+    
+  Building page so that it's easy to integrate with protractor:
+  -------------------------------------------------------------
+    
+    > <a .. class='protractor-username'></a>
+    > $('.protractor-username').click();
+    > element(by.linkText('Profil bearbeiten')).click();
+    
+  More clicking and asserting:
+  ----------------------------
+    
+    > element(by.id('id_partner_id'))
+    > browser.isElementPresent(element(by.id('id_partner_id')))
+    
+  AngularJS specific locators and tests:
+  --------------------------------------
+    
+    > http://angular.github.io/protractor/#/locators
+    
+    
